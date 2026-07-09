@@ -1,0 +1,151 @@
+@import "tailwindcss" source(none);
+@import "@fontsource/space-grotesk/400.css";
+@import "@fontsource/space-grotesk/500.css";
+@import "@fontsource/space-grotesk/600.css";
+@import "@fontsource/space-grotesk/700.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+
+  --color-neon-cyan: var(--neon-cyan);
+  --color-neon-magenta: var(--neon-magenta);
+  --color-neon-lime: var(--neon-lime);
+  --color-neon-violet: var(--neon-violet);
+  --color-neon-amber: var(--neon-amber);
+
+  --color-chart-1: var(--neon-cyan);
+  --color-chart-2: var(--neon-magenta);
+  --color-chart-3: var(--neon-lime);
+  --color-chart-4: var(--neon-violet);
+  --color-chart-5: var(--neon-amber);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 1rem;
+
+  --background: oklch(0.14 0.03 275);
+  --foreground: oklch(0.96 0.01 260);
+
+  --card: oklch(0.19 0.035 275);
+  --card-foreground: oklch(0.96 0.01 260);
+
+  --popover: oklch(0.19 0.035 275);
+  --popover-foreground: oklch(0.96 0.01 260);
+
+  --primary: oklch(0.82 0.19 200);
+  --primary-foreground: oklch(0.14 0.03 275);
+
+  --secondary: oklch(0.24 0.04 275);
+  --secondary-foreground: oklch(0.96 0.01 260);
+
+  --muted: oklch(0.22 0.03 275);
+  --muted-foreground: oklch(0.72 0.03 260);
+
+  --accent: oklch(0.28 0.06 285);
+  --accent-foreground: oklch(0.96 0.01 260);
+
+  --destructive: oklch(0.65 0.24 20);
+  --destructive-foreground: oklch(0.98 0.01 260);
+
+  --border: oklch(1 0 0 / 8%);
+  --input: oklch(1 0 0 / 10%);
+  --ring: oklch(0.82 0.19 200);
+
+  --neon-cyan: #00e5ff;
+  --neon-magenta: #ff2bd6;
+  --neon-lime: #39ff14;
+  --neon-violet: #8b5cf6;
+  --neon-amber: #f59e0b;
+
+  --sidebar: oklch(0.16 0.035 275);
+  --sidebar-foreground: oklch(0.9 0.02 260);
+  --sidebar-primary: oklch(0.82 0.19 200);
+  --sidebar-primary-foreground: oklch(0.14 0.03 275);
+  --sidebar-accent: oklch(0.24 0.05 285);
+  --sidebar-accent-foreground: oklch(0.96 0.01 260);
+  --sidebar-border: oklch(1 0 0 / 6%);
+  --sidebar-ring: oklch(0.82 0.19 200);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    color-scheme: dark;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    background-image:
+      radial-gradient(circle at 15% 10%, rgba(0, 229, 255, 0.09), transparent 45%),
+      radial-gradient(circle at 85% 90%, rgba(255, 43, 214, 0.08), transparent 45%),
+      radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.05), transparent 60%);
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+}
+
+@utility neon-panel {
+  background: linear-gradient(180deg, oklch(0.2 0.04 275 / 0.85), oklch(0.16 0.035 275 / 0.85));
+  border: 1px solid oklch(1 0 0 / 0.06);
+  border-radius: var(--radius-2xl);
+  backdrop-filter: blur(8px);
+  box-shadow:
+    0 1px 0 0 oklch(1 0 0 / 0.04) inset,
+    0 20px 40px -20px oklch(0 0 0 / 0.6);
+}
+
+@utility neon-text {
+  text-shadow: 0 0 12px currentColor;
+}
