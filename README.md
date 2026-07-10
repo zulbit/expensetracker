@@ -4,13 +4,13 @@ A personal expense & income tracker with a dark neon dashboard, live analytics, 
 
 Built with **TanStack Start (React 19)**, **Tailwind v4**, **Lovable Cloud (Supabase)**, and **Recharts**. Mobile-first, installable-feeling UI with a translucent bottom nav and drawer sidebar.
 
-**Live demo:** https://cloud-finance-sparkle.lovable.app
+**Live demo:**  https://expensetracker.zulqarnain3.workers.dev/auth
 
 ---
 
 ## Features
 
-- **Auth** — Email + password (Lovable Cloud). Single-user personal tracker.
+- **Auth** — Email + password. Single-user personal tracker.
 - **Dashboard** — KPI cards (Today / Week / Month / Year) with Δ% vs previous period, daily-spend line chart with prior-period overlay, 12-month area chart, category donut, income-vs-expense bars, savings rate, and budget progress.
 - **Expenses & Income CRUD** — Add / edit / delete with category, date, amount, note. Filter by date range, category, and text search. Responsive card-list on mobile, table on desktop.
 - **Editable categories** — Separate Income and Expense categories with icon picker (Lucide) and color. Defaults seeded on first sign-up (Outing, Dinner, Lunch, Petrol, Online Ride, Shopping, Clothing, Pay).
