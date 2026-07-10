@@ -18,17 +18,31 @@ export const scanReceipt = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((data) => inputSchema.parse(data))
   .handler(async ({ data }): Promise<ReceiptScanResult> => {
-    const apiKey = process.env.LOVABLE_API_KEY;
+    const openRouterApiKey = process.env.OPENROUTER_API_KEY;
+    const lovableApiKey = process.env.LOVABLE_API_KEY;
+    const apiKey = openRouterApiKey || lovableApiKey;
     if (!apiKey) throw new Error("AI is not configured");
 
     const dataUrl = `data:${data.mimeType};base64,${data.imageBase64}`;
+    const isOpenRouter = !!openRouterApiKey;
 
-    const res = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
+    const url = isOpenRouter
+      ? "https://openrouter.ai/api/v1/chat/completions"
+      : "https://ai.gateway.lovable.dev/v1/chat/completions";
+
+    const headers: Record<string, string> = {
+      Authorization: `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
+    };
+
+    if (isOpenRouter) {
+      headers["HTTP-Referer"] = "https://expensetracker.zulqarnain3.workers.dev";
+      headers["X-Title"] = "Neon Expense Tracker";
+    }
+
+    const res = await fetch(url, {
       method: "POST",
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        "Content-Type": "application/json",
-      },
+      headers,
       body: JSON.stringify({
         model: "google/gemini-2.5-flash",
         messages: [
